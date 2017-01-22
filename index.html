@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/video.min.js"></script>
+
+    <title>1. OPENER</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/video-js.min.css">
+  </head>
+
+  <body onLoad="init()">
+  <div class="container">
+    <div class="row"></div>
+  </div>
+
+  <div class="container" style="margin-top: 20px;">
+    <div class="starter-template">
+      <a href="https://www.youtube.com/watch?v=0ZJFYGbn7To"><h1>OPENER</h1></a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row"></div>
+  </div>
+
+  <div class="container" id="video_container">
+    <div class="row">
+      
+    </div>
+  </div>
+   
+  </body>
+    <script>
+      var required_pts = 10;
+      var num_pts = 0;
+      var num_test = 0;
+      var test_num = 1;
+
+      var max_width = 560;
+      var max_height = 400;
+
+      var points_x = [0,0,0,0,0,0,0,0,0,0];
+      var points_y = [0,0,0,0,0,0,0,0,0,0];
+      
+      var video_col1 = [];
+      var video_col2 = [];
+      var video_col3 = [];
+      var video_col4 = [];
+
+      var is_none = false;
+
+      var num_clip = 70;
+
+      function init() {
+        var video_pre = '<div class="col-md-3"><video class="video-js vjs-big-play-centered" muted autoplay loop preload="auto" controls data-setup=' + "'{" + '"fluid": true}' + "'" + ' preload="auto"><source src="resource/OPENER/OPENER';
+        var video_post = '.mp4" type=' + "'video/mp4'></video></div>";
+
+        var row_html_pre = '<div class="row" style="margin-top:5px;">'
+        var row_html_post = '</div>'
+        var col_videos = ''
+        for (var i=0; i<num_clip; i++) {
+          col_videos = col_videos + video_pre + digits(i) + video_post;
+          if (i%4==3) {
+            $("#video_container").append(row_html_pre + col_videos + row_html_post);
+            col_videos = '';
+          } 
+        }
+        if (col_videos != '') {
+          $("#video_container").append(row_html_pre + col_videos + row_html_post);
+        }
+
+
+        
+      }
+      function digits(n){
+       return n > 9 ? "" + n: "0" + n;
+      }
+
+    </script>
+
+</html>
