@@ -130,9 +130,6 @@
         aid = 123;
         wid = 234; 
         turkSubmit = 432;
-        console.log("task_id: " + task_id);
-        console.log("num_test: " + num_test);
-
         
         document.getElementById('taskId').value = task_id;
         document.getElementById('assignmentId').value = aid;
@@ -146,11 +143,11 @@
           console.log("num_test: " + num_test);
           document.getElementById('numTest').value = num_test;
           for (var i=1, len=lines.length; i<len; i++){
-            var video_time = lines[i].split(" ");
-            video_list.push(video_time[0]);
-            duration_list.push(video_time[1]);
-            start_list.push(video_time[2]);
-            end_list.push(video_time[3]);
+            var video_time = lines[i].split("_");
+            video_list.push("raw/"+video_time[0]+".mp4");
+            start_list.push(video_time[1]);
+            end_list.push((parseInt(video_time[1]) + parseInt(video_time[2])).toString());
+            duration_list.push(video_time[3]);
 
             if(i == num_test) {
               player1.src({type: 'video/mp4', src: "resource/"+video_list[0]});
@@ -163,6 +160,7 @@
           }
         });
       }
+
 
       function minusLeft() {
         start_time = parseInt(start_time) - 1;
