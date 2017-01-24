@@ -125,12 +125,20 @@
       $("#next_btn").on('click', getAnswer);
       $("#submit_btn").on('click', submitAnswer);
 
+
+      player1.on("progress", function() {
+        if(player1.bufferedPercent()>.5){
+          player1.play();
+          console.log("play");
+        }
+      });
+
       function init() {
         task_id = 1;
         aid = 123;
         wid = 234; 
         turkSubmit = 432;
-        
+
         document.getElementById('taskId').value = task_id;
         document.getElementById('assignmentId').value = aid;
         document.getElementById('workerId').value = wid;
@@ -150,12 +158,13 @@
             duration_list.push(video_time[3]);
 
             if(i == num_test) {
-              player1.src({type: 'video/mp4', src: "resource/"+video_list[0]});
-              video_duration = duration_list[0];
-              start_time = start_list[0];
-              end_time = end_list[0];
-              player1.offset({start: start_time, end:end_time});
-              updateProgressbar();      
+              // player1.src({type: 'video/mp4', src: "resource/"+video_list[0]});
+              // video_duration = duration_list[0];
+              // start_time = start_list[0];
+              // end_time = end_list[0];
+              // player1.offset({start: start_time, end:end_time});
+              // updateProgressbar();      
+              getNextData();
             }
           }
         });
