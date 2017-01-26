@@ -15,3 +15,18 @@
 	background-color: #ffffff;
 	color: #337ab7;
 }
+
+.slider-track {
+  z-index: -1;
+}
+
+#slider1 .slider-track {
+	background: #BABABA;
+}
+
+#slider2 .slider-track-high {
+	background: #ffffff;
+}
+#slider2 .slider-selection {
+	background: #BABABA;
+}
